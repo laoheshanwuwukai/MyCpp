@@ -1,8 +1,10 @@
-# Lvalues and Rvalues(C++)
+# L/Rvalues(C++)
 
 学习视频链接(bilibili)：[Video](https://www.bilibili.com/video/BV1Qt4y1G7SQ/?spm_id_from=333.337.search-card.all.click&vd_source=423d35479f1e9edaeab546e410b16e53)
 
-Pre-Concepts : 
+![](./doc/sumary.png)
+
+## Pre-Concepts : 
 
 ​	Bit Fields: Classes and Structures can contain members that occupy ==less storage than an integral type==. These members are specified as bit fields.
 
@@ -10,7 +12,7 @@ Pre-Concepts :
 
 ---
 
-
+## Value category
 
 ​	Personal Understanding ：Every C++ expression has a type , and belongs to a **value category** . The value categories are the basis for rules that compilers must follow when creating , copying , and moving temporary objects during expression evaluation.[Microsoft concepts](https://learn.microsoft.com/en-us/cpp/cpp/lvalues-and-rvalues-visual-cpp?view=msvc-170)
 
@@ -28,4 +30,8 @@ An lvalue has an address that your program can access . Examples of lvalue expre
 
 A prvalue expression has no address that is accessible by your program. Examples of prvalue expression include literals , function calls that return a non-reference type , and temporary objects that are created during expression evaluation but accessible only by the compiler.
 
-An xvalue expression has an address that no longer accessible by your program but can be used to initialize an rvalue reference , which provides access to the expression. Examples include function calls that return an rvalue reference , and the array subscrip.
+An xvalue expression has an address that no longer accessible by your program but can be used to initialize an rvalue reference , which provides access to the expression. Examples include function calls that return an rvalue reference , and the array subscrip.(与移动语义息息相关)
+
+
+
+tips : close RVO ```-fno-elide-constructors``` 
