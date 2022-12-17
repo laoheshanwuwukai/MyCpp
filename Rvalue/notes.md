@@ -103,12 +103,28 @@ Guess with `-fno-elid-constructors` :
 A a , b;
 A& lref = a;
 A&& rref = std::move(b);
-//lref and rref is lvalue
+// lref and rref are lvalue
 ```
 
 
 
 ## 5. Perect Forward
+
+```cpp
+void func(int & n){
+    cout<<"Lvalue = "<<n <<endl;
+}
+void func(int && n){
+    cout<<"Rvalue = "<<n <<endl;
+}
+
+template<typename T>
+void revoke(T && t){
+    func(std::forward<T>(t));
+}
+```
+
+
 
 完美转发：函数可以将自己的参数完美的转发给内部调用的函数，完美是指不仅能转发参数的值，还可以转发函数值的类型。实现这个技术使用到了万能引用；
 
@@ -118,7 +134,7 @@ A&& rref = std::move(b);
 
 ```cpp
 int n = 10;
-revode(n)  --> int && t ->int& t
+revoke(n)  --> int && t ->int& t
 revoke(static_cast<int &> (n))  --> int & && t =>int & t;
 revoke(static_cast<int &&> (n))  -->int && &&t  => int && t;
 ```
