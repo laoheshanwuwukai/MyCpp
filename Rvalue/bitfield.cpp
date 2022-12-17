@@ -10,6 +10,7 @@ using std::endl;
 
 // bit_fields1.cpp
 // compile with: /LD
+//sizeof Date1 is 4;
 struct Date1 {
    unsigned short nWeekDay  : 3;    // 0..7   (3 bits)
    unsigned short nMonthDay : 6;    // 0..31  (6 bits)
@@ -17,6 +18,7 @@ struct Date1 {
    unsigned short nYear     : 8;    // 0..100 (8 bits)
 };
 
+//sizeof Date2 is 8;
 struct Date2 {
    unsigned short nWeekDay  ;       //0..     (16bits)
    unsigned short nMonthDay ;    

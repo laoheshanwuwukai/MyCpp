@@ -43,8 +43,21 @@ A createA(){
 
 int main(int argc , char ** argv){
 
+    /*
+A constructor   0x7ffcf3956f07
+A copy constructor      0x7ffcf3956f47
+A destructor    0x7ffcf3956f07
+A copy constructor      0x7ffcf3956f46
+A destructor    0x7ffcf3956f47
+end of program.
+A destructor    0x7ffcf3956f46
+    */
     A a = createA();
     cout<<"end of program."<<endl;
 
+
+/*both rvalue/lvalue_reference is lvalue;*/
+    int && rvalue_reference = 100;
+    int &  lvalue_reference = rvalue_reference;
     return 0;
 }
