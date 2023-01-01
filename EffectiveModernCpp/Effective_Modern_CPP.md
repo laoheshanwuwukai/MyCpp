@@ -1,4 +1,59 @@
-#### 条款9: 优先选用别名声明，而非typedef
+# 第1章：型别推到
+
+## 条款1：理解模板型别推倒
+
+```cpp
+template<typename T>
+void func(ParamType param);
+
+//call function
+func(expr)
+```
+
+​	在编译器，编译器会根据 **```expr```** 推导 **```T ```**和**``` ParamType```**这两个型别，这两个型别往往不一样，因为**```ParamType```**会包含修饰（比如说```const ```或者引用符号）；
+
+​	T 的型别推到结果不仅仅依赖**```expr```** 的型别，还依赖**```ParamType```** 的形式，具体分三种情况
+
+1. **```ParamType```** 具有指针或引用型别，但不是万能引用；
+
+   若**```expr```** 具有引用型别，先将引用型别忽略，而后对**```expr```**和**```ParamType```**进行模式匹配
+
+2. **```ParamType```**是一个万能引用；
+
+   如果**```expr```**是个左值，T和ParamType都会被推导为左值引用；如果是个右值根据情况1 规则；
+
+3. **```ParamType```**即非指针也非引用；
+
+   忽略**```expr```**的引用性、const、volatile性能；
+
+   
+
+在C++中数组或函数型别的实参会退化成对应的指针，除非他们被用来初始化引用
+
+```cpp
+template<typename T , std::size_t N>
+constexpr std::size_t arraySize(T (&)[N]) noexcept 
+{
+    return N;
+}
+```
+
+
+
+## 条款2：理解```auto```型别推倒
+
+对于模板推倒过程:
+
+```cpp
+template<typename T>
+void func(ParamType param);
+
+func(expr)
+```
+
+```auto```就扮演了T这个角色，而变量的型别修饰扮演
+
+## 条款9: 优先选用别名声明，而非typedef
 
 ​		在C++中简化一个类型的声明可以使用如下两种方式：
 
