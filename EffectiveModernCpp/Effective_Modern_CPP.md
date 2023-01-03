@@ -20,11 +20,11 @@ func(expr)
 
 2. **```ParamType```**是一个万能引用；
 
-   如果**```expr```**是个左值，T和ParamType都会被推导为左值引用；如果是个右值根据情况1 规则；
+   如果**```expr```**是个左值，**```T```**和**```ParamType```**都会被推导为左值引用；如果是个右值根据情况1 规则；
 
 3. **```ParamType```**即非指针也非引用；
 
-   忽略**```expr```**的引用性、const、volatile性能；
+   忽略**```expr```**的引用性、```const```、```volatile```性能；
 
    
 
@@ -51,7 +51,9 @@ void func(ParamType param);
 func(expr)
 ```
 
-```auto```就扮演了T这个角色，而变量的型别修饰扮演
+**```auto```**就扮演了T这个角色，而变量的型别修饰扮演**```ParamType```** 
+
+
 
 ## 条款9: 优先选用别名声明，而非typedef
 
